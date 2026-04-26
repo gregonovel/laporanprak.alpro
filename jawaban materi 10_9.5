@@ -1,0 +1,42 @@
+handle1 = open('mbox-short.txt', 'r')
+baris1 = handle1.readlines()
+handle1.close()
+
+handle2 = open('mbox.txt', 'r')
+baris2 = handle2.readlines()
+handle2.close()
+
+print("\n=== PERBANDINGAN FILE ===")
+print(f"File 1: mbox-short.txt ({len(baris1)} baris)")
+print(f"File 2: mbox.txt ({len(baris2)} baris)")
+print("=" * 35)
+
+if len(baris1) > len(baris2):
+  maks = len(baris1)
+else:
+  maks = len(baris2)
+
+beda = 0
+for i in range(maks):
+  if i < len(baris1):
+    b1 = baris1[i].rstrip('\n')
+  else:
+    b1 = "[TIDAK ADA]"
+
+  if i < len(baris2):
+    b2 = baris2[i].rstrip('\n')
+  else:
+    b2 = "[TIDAK ADA]"
+
+  if b1 != b2:
+    beda = beda+ 1
+    print(f"\nBaris ke-{i+1}:")
+    print(f"  mbox-short.txt: {b1}")
+    print(f"  mbox.txt: {b2}")
+
+print("\n" + "-" * 35)
+if beda == 0:
+  print("HASIL: kedua file SAMA persis!")
+else:
+  print("HASIL: ditemukan {beda} baris yang BERBEDA")
+print("\n" + "-" * 35)
